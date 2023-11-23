@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GildedRoseTest {
     @Test
-    void qualityAndSellInIsLoweredAfterEachDay2() {
+    void qualityAndSellInIsLoweredAfterEachDay() {
         String name = "Flamegrinder";
         int sellIn = 5;
         int quality = 10;

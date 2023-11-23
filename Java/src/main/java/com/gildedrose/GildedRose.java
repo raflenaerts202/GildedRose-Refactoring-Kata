@@ -3,7 +3,7 @@ package com.gildedrose;
 import com.gildedrose.update.UpdateItemFactory;
 
 class GildedRose {
-    Item[] items;
+    final Item[] items;
 
     public GildedRose(Item[] items) {
         this.items = items;
