@@ -2,10 +2,10 @@ package com.gildedrose.update;
 
 import com.gildedrose.Item;
 
-public class BackstagePasses implements ItemUpdate {
+public class UpdateBackstagePasses implements UpdateItem {
     private final Item item;
 
-    public BackstagePasses(Item item) {
+    public UpdateBackstagePasses(Item item) {
         this.item = item;
     }
 

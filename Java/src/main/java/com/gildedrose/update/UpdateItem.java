@@ -2,7 +2,7 @@ package com.gildedrose.update;
 
 import com.gildedrose.Item;
 
-public interface ItemUpdate {
+public interface UpdateItem {
     void update();
 
     default void decreaseQuality(Item item) {

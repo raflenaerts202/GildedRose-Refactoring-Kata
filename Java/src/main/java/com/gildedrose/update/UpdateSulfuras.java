@@ -2,10 +2,10 @@ package com.gildedrose.update;
 
 import com.gildedrose.Item;
 
-public class Sulfuras implements ItemUpdate {
+public class UpdateSulfuras implements UpdateItem {
     private final Item item;
 
-    public Sulfuras(Item item) {
+    public UpdateSulfuras(Item item) {
         this.item = item;
     }
 

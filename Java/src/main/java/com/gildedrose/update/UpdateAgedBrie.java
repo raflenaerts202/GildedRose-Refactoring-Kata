@@ -2,10 +2,10 @@ package com.gildedrose.update;
 
 import com.gildedrose.Item;
 
-public class AgedBrie implements ItemUpdate {
+public class UpdateAgedBrie implements UpdateItem {
     private final Item item;
 
-    public AgedBrie(Item item) {
+    public UpdateAgedBrie(Item item) {
         this.item = item;
     }
 

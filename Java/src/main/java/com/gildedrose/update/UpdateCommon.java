@@ -2,10 +2,10 @@ package com.gildedrose.update;
 
 import com.gildedrose.Item;
 
-public class Common implements ItemUpdate {
+public class UpdateCommon implements UpdateItem {
     private final Item item;
 
-    public Common(Item item) {
+    public UpdateCommon(Item item) {
         this.item = item;
     }
 
