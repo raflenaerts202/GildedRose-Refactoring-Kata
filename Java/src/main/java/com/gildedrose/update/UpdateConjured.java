@@ -11,13 +11,12 @@ public class UpdateConjured implements UpdateItem {
 
     @Override
     public void update() {
-        if (item.quality > 0) {
-            decreaseQuality(item);
-            decreaseQuality(item);
-        }
-        item.sellIn = item.sellIn - 1;
+        decreaseQuality(item);
+        decreaseQuality(item);
 
-        if (item.sellIn < 0 && item.quality > 0) {
+        decreaseSellIn(item);
+
+        if (isExpired(item)) {
             decreaseQuality(item);
             decreaseQuality(item);
         }

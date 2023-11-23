@@ -11,14 +11,12 @@ public class UpdateCommon implements UpdateItem {
 
     @Override
     public void update() {
-        if (item.quality > 0) {
+        decreaseQuality(item);
+
+        decreaseSellIn(item);
+
+        if (isExpired(item)) {
             decreaseQuality(item);
         }
-        item.sellIn = item.sellIn - 1;
-
-        if (item.sellIn < 0 && item.quality > 0) {
-            decreaseQuality(item);
-        }
-
     }
 }

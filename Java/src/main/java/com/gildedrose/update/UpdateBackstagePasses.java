@@ -11,19 +11,19 @@ public class UpdateBackstagePasses implements UpdateItem {
 
     @Override
     public void update() {
-        if (item.quality < 50) {
+        increaseQuality(item);
+
+        if (item.sellIn < 11) {
             increaseQuality(item);
-
-            if (item.sellIn < 11) {
-                increaseQuality(item);
-            }
-
-            if (item.sellIn < 6) {
-                increaseQuality(item);
-            }
         }
-        item.sellIn = item.sellIn - 1;
-        if (item.sellIn < 0) {
+
+        if (item.sellIn < 6) {
+            increaseQuality(item);
+        }
+
+        decreaseSellIn(item);
+
+        if (isExpired(item)) {
             item.quality = 0;
         }
 
