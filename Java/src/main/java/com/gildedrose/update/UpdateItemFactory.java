@@ -11,6 +11,8 @@ public class UpdateItemFactory {
                 return new UpdateBackstagePasses(item);
             case "Sulfuras, Hand of Ragnaros":
                 return new UpdateSulfuras(item);
+            case "Conjured Mana Cake":
+                return new UpdateConjured(item);
             default:
                 return new UpdateCommon(item);
         }

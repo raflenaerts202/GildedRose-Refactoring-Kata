@@ -23,8 +23,33 @@ class GildedRoseTest {
     }
 
     @Test
+    void qualityDegradesTwiceAsFastForConjuredItems() {
+        String name = "Conjured Mana Cake";
+        int sellIn = 5;
+        int quality = 10;
+
+        Item[] items = new Item[]{new Item(name, sellIn, quality)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+
+        assertEquals(quality - 2, items[0].quality);
+        assertEquals(sellIn - 1, items[0].sellIn);
+    }
+
+    @Test
     void qualityDegradesTwiceAsFastAfterSellByDate() {
         String name = "Flamegrinder";
+        int quality = 10;
+
+        int degradationNoSellIn = getDegradationAfterUpdateQuality(name, 0, quality);
+        int degradationWithSellIn = getDegradationAfterUpdateQuality(name, 5, quality);
+
+        assertEquals(degradationNoSellIn, 2 * degradationWithSellIn);
+    }
+
+    @Test
+    void qualityDegradesTwiceAsFastAfterSellByDateForConjuredItems() {
+        String name = "Conjured Mana Cake";
         int quality = 10;
 
         int degradationNoSellIn = getDegradationAfterUpdateQuality(name, 0, quality);
@@ -46,11 +71,15 @@ class GildedRoseTest {
             new Item("Hellrender", 5, 10),
             new Item("Aged Brie", 5, 10),
             new Item("Sulfuras, Hand of Ragnaros", 5, 10),
+            new Item("Conjured Mana Cake", 5, 10),
             new Item("Backstage passes to a TAFKAL80ETC concert", 5, 10)
         };
         GildedRose app = new GildedRose(items);
         IntStream.range(0, 20).forEach($ -> {
-            int sellInBeforeUpdate = app.items[0].sellIn;
+            int commonSellInBeforeUpdate = app.items[0].sellIn;
+            int agedBrieSellInBeforeUpdate = app.items[1].sellIn;
+            int conjuredSellInBeforeUpdate = app.items[3].sellIn;
+            int backstagePassesSellInBeforeUpdate = app.items[3].sellIn;
 
             app.updateQuality();
 
@@ -58,7 +87,12 @@ class GildedRoseTest {
             assertTrue(app.items[1].quality >= 0);
             assertTrue(app.items[2].quality >= 0);
             assertTrue(app.items[3].quality >= 0);
-            assertEquals(sellInBeforeUpdate - 1, app.items[0].sellIn);
+            assertTrue(app.items[4].quality >= 0);
+            assertEquals(commonSellInBeforeUpdate - 1, app.items[0].sellIn);
+            assertEquals(agedBrieSellInBeforeUpdate - 1, app.items[1].sellIn);
+            assertEquals(5, app.items[2].sellIn);
+            assertEquals(conjuredSellInBeforeUpdate - 1, app.items[3].sellIn);
+            assertEquals(backstagePassesSellInBeforeUpdate - 1, app.items[4].sellIn);
         });
     }
 
